@@ -1,0 +1,6 @@
+*.exe
+.idea/
+.vscode/
+/vendor
+!/vendor/vendor.json
+!nbproject/
