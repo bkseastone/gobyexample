@@ -6,6 +6,9 @@ import (
 	"time"
 )
 
+/**
+原子计数
+*/
 func main() {
 	var ops uint64
 
