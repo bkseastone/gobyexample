@@ -10,7 +10,7 @@ import (
 
 func portScan() {
 	now := time.Now()
-	url := "www.xiakuanba.com"
+	url := "www.buffge.com"
 	var scanedCount int32 = 0
 	openPorts := make(chan int, 66668)
 	for port := 1; port < 65536; port++ {
