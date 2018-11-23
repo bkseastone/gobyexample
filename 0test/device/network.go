@@ -1,0 +1,56 @@
+package device
+
+import (
+	"log"
+	"net"
+	"strings"
+)
+
+type Network struct {
+	Name       string
+	IP         string
+	MACAddress string
+}
+
+type intfInfo struct {
+	Name       string
+	MacAddress string
+	Ipv4       []string
+}
+
+func GetNetworkInfo() (Network, error) {
+	intf, err := net.Interfaces()
+	if err != nil {
+		log.Fatal("get network info failed: %v", err)
+		return Network{}, err
+	}
+	var is = make([]intfInfo, len(intf))
+	for i, v := range intf {
+		ips, err := v.Addrs()
+		if err != nil {
+			log.Fatal("get network addr failed: %v", err)
+			return Network{}, err
+		}
+		//此处过滤loopback（本地回环）和isatap（isatap隧道）
+		if !strings.Contains(v.Name, "Loopback") && !strings.Contains(v.Name, "isatap") {
+			var network Network
+			is[i].Name = v.Name
+			is[i].MacAddress = v.HardwareAddr.String()
+			for _, ip := range ips {
+				if strings.Contains(ip.String(), ".") {
+					is[i].Ipv4 = append(is[i].Ipv4, ip.String())
+				}
+			}
+			network.Name = is[i].Name
+			network.MACAddress = is[i].MacAddress
+			if len(is[i].Ipv4) > 0 {
+				network.IP = is[i].Ipv4[0]
+			}
+			return network, nil
+			//fmt.Printf("network:=", network)
+		}
+
+	}
+
+	return Network{}, nil
+}
