@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 import s "strings"
 
@@ -60,4 +61,13 @@ func main() {
 	str := fmt.Sprintf("将字符串保存到字符串变量中 a %s", "string")
 	pl(str)
 	fmt.Fprintf(os.Stderr, "将字符串格式化保存到有输入接口的变量中 an %s\n", "error")
+	pl([]byte("字符串转字节数组"))
+	bs := make([]byte, 5)
+	for k, _ := range bs {
+		bs[k] = 'n'
+	}
+	pl("字符数组转字符串 ", string(bs))
+	pl("数字转字符串 ", strconv.Itoa(888))
+	i2, _ := strconv.Atoi("34234")
+	pl("字符串转数字", i2)
 }
