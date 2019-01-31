@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
-	"time"
+	"net/http"
 )
 
 var (
@@ -22,25 +23,28 @@ func startClient(ip string, port int) {
 		pl("服务器端", conn.RemoteAddr(), "已关闭连接...")
 		return
 	}
-	buf := make([]byte, 1024)
+	buf := make([]byte, 902400)
 	pl("服务器端地址 ", conn.RemoteAddr())
-	localConn, err := net.Dial("http", fmt.Sprintf("127.0.0.1:80"))
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	localConn.Read(buf)
-
 	for {
 		conn.Read(buf)
-		pl("服务器端的返回是 ", byte2Str(buf))
-	}
-	for _ = range time.Tick(5 * time.Second) {
-		_, err = conn.Write([]byte("ping"))
+		reqStr := byte2Str(buf)
+		pl("服务器端的返回是 ", reqStr)
+		if reqStr == "ping" || reqStr == "/favicon.ico" {
+			continue
+		}
+		resp, err := http.Get("http://127.0.0.1" + reqStr)
 		if err != nil {
-			pl("ping失败:", err.Error())
+			resp.Body.Close()
+			continue
+		}
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			log.Println(err)
+			pl("请求本地失败", err.Error())
 			return
 		}
+		conn.Write(body)
+		resp.Body.Close()
 	}
 }
 func byte2Str(p []byte) string {
