@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	i := 2
+	i := 5
 	fmt.Print("i is ")
 	switch i {
 	case 1:
@@ -15,6 +15,10 @@ func main() {
 		fmt.Println("two")
 	case 3:
 		fmt.Println("three")
+	case 4, 5, 7:
+		fmt.Println("four or five or seven")
+	default:
+		fmt.Println("un known")
 	}
 
 	switch time.Now().Weekday() {

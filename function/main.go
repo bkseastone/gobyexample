@@ -16,6 +16,7 @@ func main() {
 	fmt.Println(total(2))
 	fmt.Println(total(3))
 	fmt.Println(total(4))
+	fmt.Println(min(53, 31, 643, 124, 435, 124, 35, 32, 4, 21))
 
 }
 
@@ -45,4 +46,17 @@ func sum2() func(b int) int {
 		a = a + b
 		return a
 	}
+}
+
+/**
+... param
+*/
+func min(a ...int) (m int) {
+	m = int(^uint(0) >> 1)
+	for _, v := range a {
+		if v < m {
+			m = v
+		}
+	}
+	return
 }
