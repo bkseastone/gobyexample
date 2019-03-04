@@ -23,7 +23,8 @@ type School struct {
 }
 type User struct {
 	WxName string `json:"wx_name"`
-	Age    int    `json:"age"`
+	//omitempty当字段为空时不序列化
+	Age    int    `json:"age,omitempty"`
 	School School `json:"sch"`
 }
 
@@ -81,9 +82,9 @@ func main() {
 	fmt.Println("不返回字节数组 直接返回到某个Write接口")
 	enc.Encode(d)
 	u0 := User{
-		"buffge",
-		24,
-		School{
+		WxName: "buffge",
+		//24,
+		School: School{
 			"xx路xx号",
 			"光明小学",
 		},
