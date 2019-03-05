@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/buffge/gobyexample/variable/sub2"
+)
 
 /**
 variable
@@ -20,4 +23,5 @@ func main() {
 	fmt.Printf("不支持重定义变量\n")
 	a := 32
 	fmt.Printf("这里a会自动初始化为int = %v\n", a)
+	sub2.Test()
 }
