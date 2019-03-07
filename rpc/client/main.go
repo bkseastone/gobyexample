@@ -23,7 +23,11 @@ func main() {
 	log.Println(sum, err)
 	err = client.Call("CalcService.Add", rpcdemo.Args{1324, 344}, &sum)
 	log.Println(sum, err)
-	//报错 json: cannot unmarshal number into Go value of type rpcdemo.Args
+	// 报错 json: cannot unmarshal number into Go value of type rpcdemo.Args
 	err = client.Call("CalcService.Add", 1, &sum)
 	log.Println(sum, err)
+	var res string
+	// HELLO BUFFGE nil
+	err = client.Call("Hello.Upper", "hello buffge", &res)
+	log.Println(res, err)
 }
