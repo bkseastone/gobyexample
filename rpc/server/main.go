@@ -14,6 +14,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	// 可以注册多个服务
+	err = rpc.Register(rpcdemo.Hello{})
+	if err != nil {
+		panic(err)
+	}
 	listener, err := net.Listen("tcp", ":7788")
 	if err != nil {
 		panic(err)
