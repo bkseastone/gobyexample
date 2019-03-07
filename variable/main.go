@@ -13,6 +13,9 @@ variable
 	布尔值为false
 	字符串为""
 */
+
+// main 包中全局变量其他包无法使用
+//var Nick string
 func main() {
 	var i int
 	var b bool
