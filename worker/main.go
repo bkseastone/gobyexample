@@ -15,7 +15,7 @@ func workerPool(poolNum int) {
 	jobs := make(chan int, poolNum)
 	res := 0
 	worker := func(jobs chan int) {
-		//在这里不停的接受任务并执行
+		// 在这里不停的接受任务并执行
 		for job := range jobs {
 			fmt.Println("正在执行一些操作")
 			time.Sleep(300 * time.Millisecond)
@@ -28,7 +28,7 @@ func workerPool(poolNum int) {
 		go worker(jobs)
 	}
 	for i := 0; i < 10000; i++ {
-		//在这里投递任务
+		// 在这里投递任务
 		jobs <- i
 	}
 }

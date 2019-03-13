@@ -12,7 +12,7 @@ func main() {
 	if 8%4 == 0 {
 		fmt.Println("8是4的整数倍")
 	}
-	//在if中可以先定义一个变量,然后整个if中都可以使用
+	// 在if中可以先定义一个变量,然后整个if中都可以使用
 	if num := 9; num < 0 {
 		fmt.Println(num, "是负数")
 	} else if num < 10 {
@@ -20,6 +20,6 @@ func main() {
 	} else {
 		fmt.Println(num, "大于10的数")
 	}
-	//出了if就不能使用这个变量了
-	//fmt.Println(num)
+	// 出了if就不能使用这个变量了
+	// fmt.Println(num)
 }
