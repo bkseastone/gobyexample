@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -14,9 +13,11 @@ var (
 )
 
 func main() {
-	var url string
-	var concurrent, timeSec int
-	flag.StringVar(&url, "url", "http://openbig.oss-cn-shenzhen.aliyuncs.com/gg.js", "要轰炸的url")
+	var (
+		url                 string
+		concurrent, timeSec int
+	)
+	flag.StringVar(&url, "url", "http://baidu.com", "要访问的url")
 	flag.IntVar(&concurrent, "c", 10000, "并发数")
 	flag.IntVar(&timeSec, "time", 1, "轰炸的时间s")
 	flag.Parse()
@@ -39,7 +40,7 @@ func dos(url string, concurrency int, timeSec int) {
 				continue
 			}
 			duration := t.Sub(begin)
-			fmt.Printf("\tticker 共用时%.2f\n\t 成功%d次\n\t 失败%d次\n\t 总字节数%.2fM\n",
+			fmt.Printf(" ticker 共用时%.2f\n 成功%d次\n 失败%d次\n 总字节数%.2fM\n",
 				duration.Seconds(), successCount, failedCount, float32(contentLen/1024/1024))
 		}
 	}()
@@ -70,7 +71,7 @@ func spider(url string, contItemLen chan int, fail chan byte) {
 		return
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	contentLen := len(body)
-	contItemLen <- contentLen
+	// body, err := ioutil.ReadAll(resp.Body)
+	// contentLen := len(body)
+	contItemLen <- int(resp.ContentLength)
 }
