@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"runtime"
 	"syscall"
 )
 
@@ -23,13 +24,19 @@ func main() {
 	// 	7:  "bus error",
 	// 	8:  "floating point exception",
 	// 	9:  "killed",
-	// 	10: "user defined signal 1",
+	// 	10: "user defined signal 1", // linux 下才有 kill -
 	// 	11: "segmentation fault",
 	// 	12: "user defined signal 2",
 	// 	13: "broken pipe",
 	// 	14: "alarm clock",
 	// 	15: "terminated",
-	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+	sysType := runtime.GOOS
+
+	if sysType == "windows" {
+	}
+	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM,
+		syscall.SIGQUIT,
+	)
 	go func() {
 		sig := <-sigs
 		switch sig {
