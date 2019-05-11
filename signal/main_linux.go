@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-	"runtime"
 	"syscall"
 )
 
@@ -30,7 +29,6 @@ func main() {
 	// 	13: "broken pipe",
 	// 	14: "alarm clock",
 	// 	15: "terminated",
-	sysType := runtime.GOOS
 
 	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM,
 		syscall.SIGQUIT, syscall.SIGUSR1, syscall.SIGUSR2,
