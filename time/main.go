@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
-import "time"
+import (
+	"fmt"
+	n "github.com/jinzhu/now"
+	"time"
+)
 
 func main() {
 	p := fmt.Println
@@ -68,4 +71,12 @@ func main() {
 	ansic := "Mon Jan _2 15:04:05 2006"
 	_, e = time.Parse(ansic, "8:41PM")
 	p(e)
+	p("今天的起始时间", n.BeginningOfDay())
+	today := n.New(time.Now())
+	p("今天的起始时间", today.BeginningOfDay())
+	tomorrow := today.AddDate(0, 0, 1)
+	tomorrowBegin := n.New(tomorrow).BeginningOfDay()
+	p("明天的起始时间", tomorrowBegin)
+	p("还有%s今天结束", today.Sub(tomorrowBegin))
+
 }

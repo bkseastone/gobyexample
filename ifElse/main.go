@@ -13,6 +13,7 @@ func main() {
 		fmt.Println("8是4的整数倍")
 	}
 	// 在if中可以先定义一个变量,然后整个if中都可以使用
+	// 只可以定义一个
 	if num := 9; num < 0 {
 		fmt.Println(num, "是负数")
 	} else if num < 10 {
