@@ -5,6 +5,8 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"github.com/alexedwards/argon2id"
+	"log"
 )
 import "fmt"
 
@@ -37,4 +39,24 @@ func main() {
 	//计算hash值
 	bs512 := s512.Sum(nil)
 	fmt.Printf("sha512值 %x\n", bs512)
+	// 计算argon2id
+	hash, err := argon2id.CreateHash("qwer", argon2id.DefaultParams)
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println(hash)
+	}
+	// 验证argon2id
+	match, err := argon2id.ComparePasswordAndHash("qwer", hash)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Match: %v", match)
+	pwdHash := "$argon2id$v=19$m=1024,t=2," +
+		"p=2$OEVrSUtGSEFQNmRrengyNg$u0N+bFvuyrg5V0vgDxk2STa4Os8mnOzAm+Bi+tjvPa8"
+	isRightPwd, err := argon2id.ComparePasswordAndHash("qwer", pwdHash)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("密码验证结果: %v", isRightPwd)
 }

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/hex"
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -70,4 +72,63 @@ func main() {
 	pl("数字转字符串 ", strconv.Itoa(888))
 	i2, _ := strconv.Atoi("34234")
 	pl("字符串转数字", i2)
+	name := "buffge"
+	// 二进制转16进制字符串
+	nameHex, _ := Bin2hex(name)
+	fmt.Printf("二进制 %s 转16进制 hex: %v\n", name, nameHex)
+	// 二进制转16进制字节数组
+	nameHexBts, _ := Bin2hexBytes(name)
+	fmt.Printf("二进制 %s 转16进制 hex bytes: %v\n", name, nameHexBts)
+
+	// 16进制字符串|[]byte转二进制字符串
+	nameBin, _ := Hex2Bin(nameHex)
+	fmt.Printf("十六进制字符串 %v 转二进制 bin: %v\n", nameHex, nameBin)
+	nameBin2, _ := Hex2Bin(nameHexBts)
+	fmt.Printf("十六进制bytes %v 转二进制 bin: %v\n", nameHexBts, nameBin2)
+	nameBin3, _ := Hex2BinBytes(nameHex)
+	fmt.Printf("十六进制字符串 %v 转二进制字符数组 bin: %v\n", nameHex, nameBin3)
+
+}
+func Bin2hex(bin interface{}) (hexStr string, err error) {
+	var bts []byte
+	switch bin.(type) {
+	case string:
+		bts = []byte(bin.(string))
+	case []byte:
+		bts = bin.([]byte)
+	default:
+		err = errors.New("require string or []byte")
+	}
+	// 二进制转16进制字符串
+	hexStr = hex.EncodeToString(bts)
+
+	return
+}
+func Bin2hexBytes(bin interface{}) ([]byte, error) {
+	hexStr, err := Bin2hex(bin)
+	return []byte(hexStr), err
+}
+
+// 16进制字符串|[]byte转二进制字符串
+func Hex2Bin(hexData interface{}) (string, error) {
+	var (
+		hexBys []byte
+		err    error
+	)
+	switch hexData.(type) {
+	case string:
+		hexBys = []byte(hexData.(string))
+	case []byte:
+		hexBys = hexData.([]byte)
+	default:
+		err = errors.New("require string or []byte")
+	}
+	maxEnLen := hex.EncodedLen(len(hexBys))
+	binBys := make([]byte, maxEnLen)
+	hex.Decode(binBys, hexBys)
+	return string(binBys), err
+}
+func Hex2BinBytes(bin interface{}) ([]byte, error) {
+	binStr, err := Hex2Bin(bin)
+	return []byte(binStr), err
 }
