@@ -65,7 +65,7 @@ func main() {
 	fmt.Fprintf(os.Stderr, "将字符串格式化保存到有输入接口的变量中 an %s\n", "error")
 	pl([]byte("字符串转字节数组"))
 	bs := make([]byte, 5)
-	for k, _ := range bs {
+	for k := range bs {
 		bs[k] = 'n'
 	}
 	pl("字符数组转字符串 ", string(bs))
@@ -87,7 +87,21 @@ func main() {
 	fmt.Printf("十六进制bytes %v 转二进制 bin: %v\n", nameHexBts, nameBin2)
 	nameBin3, _ := Hex2BinBytes(nameHex)
 	fmt.Printf("十六进制字符串 %v 转二进制字符数组 bin: %v\n", nameHex, nameBin3)
+	f, _ := strconv.ParseFloat("1.234", 64)
+	fmt.Println(f)
+	// 字符串转 int
+	i, _ := strconv.ParseInt("123", 0, 64)
+	fmt.Println(i)
 
+	// `ParseInt` 会自动识别出十六进制数。
+	d, _ := strconv.ParseInt("0x1c8", 0, 64)
+	fmt.Println(d)
+	// `ParseUint` 也是可用的。
+	u, _ := strconv.ParseUint("789", 0, 64)
+	fmt.Println(u)
+	// `Atoi` 是一个基础的 10 进制整型数转换函数。
+	k, _ := strconv.Atoi("135")
+	fmt.Println(k)
 }
 func Bin2hex(bin interface{}) (hexStr string, err error) {
 	var bts []byte
