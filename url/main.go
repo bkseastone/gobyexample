@@ -7,7 +7,7 @@ import (
 import "net/url"
 
 func main() {
-	s := "postgres://host.com/path?k=123v#f"
+	s := "postgres://buffge:nihao@host.com/path?k=123v#f"
 	u, err := url.Parse(s)
 	if err != nil {
 		panic(err)
