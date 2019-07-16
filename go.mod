@@ -8,6 +8,7 @@ require (
 	github.com/alexedwards/argon2id v0.0.0-20190612080829-01a59b2b8802
 	github.com/go-ole/go-ole v1.2.4 // indirect
 	github.com/jinzhu/now v1.0.1
+	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
 	golang.org/x/net v0.0.0-20190628185345-da137c7871d7 // indirect
 	golang.org/x/sync v0.0.0-20190427212804-112230192c58 // indirect
