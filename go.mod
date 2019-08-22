@@ -7,12 +7,14 @@ require (
 	github.com/akavel/rsrc v0.8.0 // indirect
 	github.com/alexedwards/argon2id v0.0.0-20190612080829-01a59b2b8802
 	github.com/go-ole/go-ole v1.2.4 // indirect
+	github.com/google/gopacket v1.1.17 // indirect
 	github.com/jinzhu/now v1.0.1
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
+	gocv.io/x/gocv v0.20.0 // indirect
 	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
-	golang.org/x/net v0.0.0-20190628185345-da137c7871d7 // indirect
+	golang.org/x/net v0.0.0-20190724013045-ca1201d0de80 // indirect
 	golang.org/x/sync v0.0.0-20190427212804-112230192c58 // indirect
 	golang.org/x/sys v0.0.0-20190730174312-6a60838ec25 // indirect
 	golang.org/x/text v0.3.2 // indirect
-	golang.org/x/tools v0.0.0-20190701194522-38ae2c8f6412 // indirect
+	golang.org/x/tools v0.0.0-20190724185037-8aa4eac1a7c1 // indirect
 )
