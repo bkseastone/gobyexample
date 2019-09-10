@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+
+	sort2 "github.com/buffge/gobyexample/algorithm/sort"
+
+	"github.com/buffge/gobyexample/rand/utils"
+)
 
 // 归并排序
-func mergeSort(arr []int) []int {
+func sort(arr []int) []int {
 	arrLen := len(arr)
 	// 如果当前数组长度为1就返回此有序数组
 	if arrLen == 1 {
@@ -15,7 +22,7 @@ func mergeSort(arr []int) []int {
 	right := arr[mid:]
 	// 对分开的2个数组分别排序
 	// 返回合并后的有序数组
-	return merge(mergeSort(left), mergeSort(right))
+	return merge(sort(left), sort(right))
 }
 
 // 合并2个有序数组
@@ -43,6 +50,13 @@ func merge(left []int, right []int) []int {
 	return result
 }
 func main() {
-	arr := []int{35, 234, 1, 461, 6, 12, 61, 3235, 436, 12, 3}
-	fmt.Println(mergeSort(arr))
+	dataCount := sort2.DataCount
+	// dataCount = 100000
+	arr := utils.GenerateRandomIntData(0, 100, dataCount)
+	// fmt.Println(arr)
+	now := time.Now()
+	arr = sort(arr)
+	duration := time.Now().Sub(now)
+	fmt.Println(arr[0:10])
+	fmt.Printf("共用时 %s\n", duration)
 }
