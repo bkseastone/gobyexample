@@ -10,14 +10,14 @@ import (
 
 func main() {
 	dataCount := sortConf.DataCount
-	dataCount = 10
+	// dataCount = 10
 	arr := utils.GenerateRandomIntData(0, 100, dataCount)
-	arr = []int{1, 2, 5, 3, 1}
+	// arr = []int{1, 2, 5, 3, 1}
 	// fmt.Println(arr)
 	now := time.Now()
 	sort(arr)
 	duration := time.Now().Sub(now)
-	fmt.Println(arr[0:5])
+	fmt.Println(arr[0:10])
 	fmt.Printf("共用时 %s\n", duration)
 }
 
