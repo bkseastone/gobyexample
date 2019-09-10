@@ -10,52 +10,58 @@ import (
 )
 
 // 归并排序
-func sort(arr []int) []int {
-	arrLen := len(arr)
+func sort(arr []int, lo, hi int) {
 	// 如果当前数组长度为1就返回此有序数组
-	if arrLen == 1 {
-		return arr
+	if lo < hi {
+		mid := lo + hi + 1>>1
+		sort(arr, lo, mid-1)
+		sort(arr, mid, hi)
+		merge(arr, lo, hi)
 	}
-	// 数组一分为二
-	mid := arrLen >> 1
-	left := arr[0:mid]
-	right := arr[mid:]
-	// 对分开的2个数组分别排序
-	// 返回合并后的有序数组
-	return merge(sort(left), sort(right))
 }
 
 // 合并2个有序数组
-func merge(left []int, right []int) []int {
-	// 先定义有序数组
-	var result []int
+func merge(arr []int, lo, hi int) {
 	// 从左右2个有序数组 以此取出最小值,当有一方为空时结束
-	for len(left) != 0 && len(right) != 0 {
-		if left[0] <= right[0] {
-			result = append(result, left[0])
-			left = left[1:]
+	len := hi - lo + 1
+	// 先定义有序数组
+	result := make([]int, len)
+	mid := lo + hi + 1>>1
+	i := lo
+	j := mid
+	k := 0
+	for i < mid && j <= hi {
+		if arr[i] < arr[j] {
+			result[k] = arr[i]
+			k++
+			i++
 		} else {
-			result = append(result, right[0])
-			right = right[1:]
+			result[k] = arr[j]
+			k++
+			j++
 		}
 	}
-	// 如果取最小值结束时 左数组还有数值,那么左数组中值就是最大值,
-	// 直接加到尾巴上
-	if len(left) != 0 {
-		result = append(result, left...)
+	for i < mid {
+		result[k] = arr[i]
+		k++
+		i++
 	}
-	if len(right) != 0 {
-		result = append(result, right...)
+	for j <= hi {
+		result[k] = arr[j]
+		k++
+		j++
 	}
-	return result
+	for k, v := range result {
+		arr[k] = v
+	}
 }
 func main() {
 	dataCount := sort2.DataCount
-	// dataCount = 100000
+	dataCount = 100000
 	arr := utils.GenerateRandomIntData(0, 100, dataCount)
 	// fmt.Println(arr)
 	now := time.Now()
-	arr = sort(arr)
+	sort(arr, 0, len(arr)-1)
 	duration := time.Now().Sub(now)
 	fmt.Println(arr[0:10])
 	fmt.Printf("共用时 %s\n", duration)
