@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// https://www.cnblogs.com/zhangchengbing/p/3210362.html
 var (
 	pl   = fmt.Println
 	pf   = fmt.Printf
@@ -26,10 +27,11 @@ func bfs(maze [][]int, begin, end *point) ([][2]int, error) {
 	height := len(maze[0])
 	var steps, queue [][2]int
 	queue = append(queue, [2]int{begin.x, begin.y})
+	steps = append(steps, [2]int{begin.x, begin.y})
+
 	for p := range queue {
 
 	}
-	steps = append(steps, [2]int{begin.x, begin.y})
 
 	return nil, nil
 
