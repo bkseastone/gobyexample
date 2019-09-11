@@ -1,3 +1,3 @@
 package sort
 
-var DataCount = 100000
+var DataCount = 100_000
