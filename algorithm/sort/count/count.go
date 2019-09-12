@@ -22,7 +22,7 @@ func main() {
 	fmt.Printf("共用时 %s\n", duration)
 }
 
-// 计数技术排序
+// 计数排序
 func sort(arr []int) {
 	min, max := math.MaxInt64, math.MinInt64
 	for _, v := range arr {
