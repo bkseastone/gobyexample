@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 
 	sortConf "github.com/buffge/gobyexample/algorithm/sort"
@@ -11,7 +12,7 @@ import (
 func main() {
 	dataCount := sortConf.DataCount
 	// dataCount = 100_0000
-	arr := utils.GenerateRandomIntData(0, 1_0000, dataCount)
+	arr := utils.GenerateRandomIntData(-42312, 1_0000, dataCount)
 	// arr = []int{1, 2, 5, 3, 1}
 	// fmt.Println(arr)
 	now := time.Now()
@@ -23,20 +24,23 @@ func main() {
 
 // 计数技术排序
 func sort(arr []int) {
-	max := 0
+	min, max := math.MaxInt64, math.MinInt64
 	for _, v := range arr {
 		if v > max {
 			max = v
 		}
+		if v < min {
+			min = v
+		}
 	}
-	bucket := make([]int, max+1)
+	bucket := make([]int, max-min+1)
 	for _, v := range arr {
-		bucket[v]++
+		bucket[v-min]++
 	}
 	currIdx := 0
-	for i := 0; i < max+1; i++ {
+	for i := 0; i < max-min+1; i++ {
 		for bucket[i] > 0 {
-			arr[currIdx] = i
+			arr[currIdx] = i + min
 			currIdx++
 			bucket[i]--
 		}
