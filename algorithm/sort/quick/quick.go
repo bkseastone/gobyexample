@@ -9,7 +9,7 @@ import (
 	"github.com/buffge/gobyexample/rand/utils"
 )
 
-// 归并排序
+// 快速排序
 func sort(arr []int, lo, hi int) {
 	if lo < hi {
 		mid := split(arr, lo, hi)

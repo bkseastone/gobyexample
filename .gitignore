@@ -4,4 +4,5 @@
 /vendor
 !/vendor/vendor.json
 !nbproject/
-/test/
+
+go.sum
