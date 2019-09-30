@@ -1,35 +1,50 @@
 package main
 
 import (
-	"github.com/buffge/gobyexample/rpc"
+	"context"
+	"errors"
+	pb "github.com/buffge/gobyexample/rpc/protos"
+	"google.golang.org/grpc"
 	"log"
 	"net"
-	"net/rpc"
-	"net/rpc/jsonrpc"
 )
 
+const (
+	port = ":50051"
+)
+
+type User struct {
+	Name string
+	age  int32
+}
+type server struct{}
+
+var users map[int32]User
+
+func (s *server) GetUser(ctx context.Context, in *pb.UserQueryInfo) (*pb.UserInfo, error) {
+	uid := in.Id
+	if _, ok := users[uid]; !ok {
+		return nil, errors.New("用户不存在")
+	}
+	log.Println("正在输出用户信息", users[uid])
+	return &pb.UserInfo{Name: users[uid].Name, Age: users[uid].age}, nil
+}
+
 func main() {
-	// rpc.RegisterName("buffge", rpcdemo.CalcService{})
-	err := rpc.Register(rpcdemo.CalcService{})
+	users = make(map[int32]User)
+	users[1] = User{
+		"buffge",
+		25,
+	}
+	users[2] = User{
+		"zty",
+		24,
+	}
+	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		panic(err)
+		log.Fatalf("failed to listen: %v\n", err)
 	}
-	// 可以注册多个服务
-	err = rpc.Register(rpcdemo.Hello{})
-	if err != nil {
-		panic(err)
-	}
-	listener, err := net.Listen("tcp", ":7788")
-	if err != nil {
-		panic(err)
-	}
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			log.Printf("accept error: %v", err)
-			continue
-		}
-		log.Println("接收到新请求")
-		go jsonrpc.ServeConn(conn)
-	}
+	s := grpc.NewServer()
+	pb.RegisterUserServer(s, &server{})
+	s.Serve(lis)
 }
