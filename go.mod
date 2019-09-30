@@ -10,4 +10,5 @@ require (
 	github.com/google/gopacket v1.1.17
 	github.com/jinzhu/now v1.0.1
 	github.com/spaolacci/murmur3 v1.1.0
+	golang.org/x/tools v0.0.0-20190920023704-c426260dee6e // indirect
 )
