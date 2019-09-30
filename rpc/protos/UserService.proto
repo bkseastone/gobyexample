@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message UserQueryInfo {
+    // The location from which the message is sent.
+    int32 id = 1;
+}
+message UserInfo {
+    string name = 1;
+    int32 age = 2;
+}
+service User {
+    // A simple RPC.
+    //
+    // Obtains the feature at a given position.
+    //
+    // A feature with an empty name is returned if there's no feature at the given
+    // position.
+    rpc GetUser (UserQueryInfo) returns (UserInfo) {
+    }
+
+}
