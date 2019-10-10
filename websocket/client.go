@@ -6,6 +6,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -94,7 +95,7 @@ func (c *Client) writePump() {
 				c.conn.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
-
+			fmt.Printf("接收到新消息: %s,\n", message)
 			w, err := c.conn.NextWriter(websocket.TextMessage)
 			if err != nil {
 				return

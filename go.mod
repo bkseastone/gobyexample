@@ -12,6 +12,7 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/google/gopacket v1.1.17
 	github.com/gorilla/websocket v1.4.1
+	github.com/jinzhu/configor v1.1.1
 	github.com/jinzhu/now v1.0.1
 	github.com/spaolacci/murmur3 v1.1.0
 	golang.org/x/net v0.0.0-20190926025831-c00fd9afed17
