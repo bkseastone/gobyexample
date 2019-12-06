@@ -8,6 +8,9 @@ require (
 	github.com/alexedwards/argon2id v0.0.0-20190612080829-01a59b2b8802
 	github.com/facebookincubator/ent v0.0.0-20191007144830-82f91dfcd247
 	github.com/go-ole/go-ole v1.2.4 // indirect
+	github.com/go-playground/locales v0.13.0
+	github.com/go-playground/universal-translator v0.17.0
+	github.com/go-playground/validator/v10 v10.0.1
 	github.com/go-sql-driver/mysql v1.4.1-0.20190510102335-877a9775f068
 	github.com/golang/protobuf v1.3.2
 	github.com/google/gopacket v1.1.17
