@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	s "strings"
 )
-import s "strings"
 
 var (
 	pl = fmt.Println
@@ -19,12 +19,15 @@ type point struct {
 }
 
 func main() {
+	// typeName := "aaa<buffge>"
+	pf("%q", s.Fields(" sss ")[0])
+	os.Exit(1)
 	pl("字符串中是否包含某值:  ", s.Contains("test", "es"))
 	pl("字符串中子串的个数:     ", s.Count("test", "t"))
 	pl("检查字符串是否以什么字符串开头: ", s.HasPrefix("test", "te"))
 	pl("检查字符串是否以什么字符串结尾: ", s.HasSuffix("test", "st"))
 	pl("检测子字符串在字符串中的index:     ", s.Index("test", "e"))
-	//分隔符可以不要
+	// 分隔符可以不要
 	pl("将字符串数组组合为字符串:      ", s.Join([]string{"a", "b"}, "-"))
 	pl("将字符串重复输出n次:    ", s.Repeat("a", 5))
 	pl("将字符串中的某值全部换为某值:   ", s.Replace("foo", "o", "0", -1))
@@ -52,11 +55,11 @@ func main() {
 	pf("带双引号的字符串 %q\n", "\"string\"")
 	pf("十六进制字符串 %x\n", "hex this")
 	pf("指针 %p\n", &p0)
-	//6d 表示 占6个位置
+	// 6d 表示 占6个位置
 	pf("|%6d|%6d|\n", 12, 345)
-	//.2表示浮点数保存2位小数
+	// .2表示浮点数保存2位小数
 	pf("|%6.2f|%6.2f|\n", 1.2, 3.45)
-	//-表示左对齐
+	// -表示左对齐
 	pf("|%-6.2f|%-6.2f|\n", 1.2, 3.45)
 	pf("|%6s|%6s|\n", "foo", "b")
 	pf("|%-6s|%-6s|\n", "foo", "b")

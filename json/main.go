@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -9,6 +10,7 @@ import (
 type response1 struct {
 	Page   int
 	Fruits []string
+	Ref    string
 }
 type response2 struct {
 	Page   int      `json:"page"`
@@ -23,13 +25,13 @@ type School struct {
 }
 type User struct {
 	WxName string `json:"wx_name"`
-	//omitempty当字段为空时不序列化
+	// omitempty当字段为空时不序列化
 	Age    int    `json:"age,omitempty"`
 	School School `json:"sch"`
 }
 
 func main() {
-	//Marshal是编码一个json字节数组
+	// Marshal是编码一个json字节数组
 	bolB, _ := json.Marshal(true)
 	fmt.Println(string(bolB))
 	intB, _ := json.Marshal(1)
@@ -48,9 +50,15 @@ func main() {
 
 	res1D := &response1{
 		Page:   1,
-		Fruits: []string{"apple", "peach", "pear"}}
-	res1B, _ := json.Marshal(res1D)
-	fmt.Println(string(res1B))
+		Fruits: []string{"apple", "peach", "pear", "测试中文"},
+		Ref:    "JsonRes<Data:api.User>",
+	}
+	buf := bytes.NewBuffer([]byte{})
+	jsonEn := json.NewEncoder(buf)
+	// 设置不转义html实体
+	jsonEn.SetEscapeHTML(false)
+	_ = jsonEn.Encode(res1D)
+	fmt.Println("123", buf.String(), "878")
 
 	res2D := &response2{
 		Page:   1,
@@ -59,12 +67,12 @@ func main() {
 	fmt.Println("使用注解的json ", string(res2B))
 	byt := []byte(`{"num":6.13,"strs":["a","b"]}`)
 	var dat map[string]interface{}
-	//解码json
+	// 解码json
 	if err := json.Unmarshal(byt, &dat); err != nil {
 		panic(err)
 	}
 	fmt.Println(dat)
-	//将接口值设置为浮点数
+	// 将接口值设置为浮点数
 	num := dat["num"].(float64)
 	fmt.Println(num)
 	strs := dat["strs"].([]interface{})
@@ -73,7 +81,7 @@ func main() {
 
 	str := `{"page": 1, "fruits": ["apple", "peach"]}`
 	res := response2{}
-	//将json解码到某个对象中
+	// 将json解码到某个对象中
 	json.Unmarshal([]byte(str), &res)
 	fmt.Println(res)
 	fmt.Println(res.Fruits[0])
@@ -83,7 +91,7 @@ func main() {
 	enc.Encode(d)
 	u0 := User{
 		WxName: "buffge",
-		//24,
+		// 24,
 		School: School{
 			"xx路xx号",
 			"光明小学",
