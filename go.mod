@@ -23,6 +23,7 @@ require (
 	github.com/jinzhu/configor v1.1.1
 	github.com/jinzhu/now v1.0.1
 	github.com/jordan-wright/email v0.0.0-20200322182553-8eef2508c362
+	github.com/robfig/cron/v3 v3.0.1
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/vearne/golib v0.0.4 // indirect
 	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b
