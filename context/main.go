@@ -42,7 +42,8 @@ func testDeadline() {
 	time.Sleep(time.Second * 3)
 }
 func main() {
-	testCancel()
+	testTimeout()
+	//testCancel()
 	// ch 一次只能通知一个 ctx.Done() 可以通知全部
 	//ch := make(chan bool)
 	//go testMultiChan(ch, "1")
@@ -52,7 +53,7 @@ func main() {
 	//	<-time.After(3 * time.Second)
 	//	ch <- true
 	//}(ch)
-	//time.Sleep(10 * time.Second)
+	time.Sleep(10 * time.Second)
 
 }
 func testMultiChan(ch <-chan bool, name string) {
