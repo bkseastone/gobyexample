@@ -20,6 +20,7 @@ require (
 	github.com/gorilla/websocket v1.4.1
 	github.com/jinzhu/configor v1.1.1
 	github.com/jinzhu/now v1.0.1
+	github.com/jordan-wright/email v0.0.0-20200322182553-8eef2508c362
 	github.com/spaolacci/murmur3 v1.1.0
 	golang.org/x/net v0.0.0-20190926025831-c00fd9afed17
 	golang.org/x/sys v0.0.0-20190927073244-c990c680b611 // indirect
