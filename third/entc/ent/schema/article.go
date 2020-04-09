@@ -1,9 +1,10 @@
 package schema
 
 import (
+	"time"
+
 	"github.com/facebookincubator/ent"
 	"github.com/facebookincubator/ent/schema/field"
-	"time"
 )
 
 // Article holds the schema definition for the Article entity.

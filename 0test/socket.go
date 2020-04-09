@@ -28,7 +28,7 @@ func inet_addr(ipaddr string) [4]byte {
 	return ret
 }
 
-func main() {
+func main2() {
 	var (
 		//sock syscall.Handle
 		//addr    syscall.SockaddrInet4

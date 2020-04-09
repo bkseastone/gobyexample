@@ -22,24 +22,24 @@ type point struct {
 	x, y int
 }
 
-func bfs(maze [][]int, begin, end *point) ([][2]int, error) {
-	width := len(maze)
-	height := len(maze[0])
-	var steps, queue [][2]int
-	queue = append(queue, [2]int{begin.x, begin.y})
-	steps = append(steps, [2]int{begin.x, begin.y})
+// func bfs(maze [][]int, begin, end *point) ([][2]int, error) {
+// width := len(maze)
+// height := len(maze[0])
+// var steps, queue [][2]int
+// queue = append(queue, [2]int{begin.x, begin.y})
+// steps = append(steps, [2]int{begin.x, begin.y})
 
-	for p := range queue {
+// for p := range queue {
+//
+// }
 
-	}
-
-	return nil, nil
-
-}
+// return nil, nil
+//
+// }
 
 // 广度优先算法
 func main() {
 	// steps := make([][]int, 1)
 	// pl(len(maze))
-	steps, err := bfs(maze, begin, end)
+	// steps, err := bfs(maze, begin, end)
 }
