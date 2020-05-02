@@ -9,7 +9,6 @@ import (
 	zhTrans "github.com/go-playground/validator/v10/translations/zh"
 )
 
-// User contains user information
 type User struct {
 	FirstName      string     `validate:"required"`
 	LastName       string     `validate:"required"`
@@ -18,8 +17,6 @@ type User struct {
 	FavouriteColor string     `validate:"iscolor"`                // alias for 'hexcolor|rgb|rgba|hsl|hsla'
 	Addresses      []*Address `validate:"required,dive,required"` // a person can have a home and cottage...
 }
-
-// Address houses a users address information
 type Address struct {
 	Street string `validate:"required"`
 	City   string `validate:"required"`
@@ -35,44 +32,49 @@ var (
 )
 
 func main() {
-	validate = validator.New()
 	zh := zh.New()
 	uni = ut.New(zh, zh)
-
-	// this is usually know or extracted from http 'Accept-Language' header
-	// also see uni.FindTranslator(...)
-	trans, _ := uni.GetTranslator("zh")
+	var _ = 0
+	trans, _ = uni.GetTranslator("zh")
 	validate = validator.New()
 	_ = zhTrans.RegisterDefaultTranslations(validate, trans)
+
 	validateStruct()
-	validateVariable()
+	//validateVariable()
 }
 func validateStruct() {
+	_ = validate.RegisterTranslation("lte", trans, func(ut ut.Translator) error {
+		return ut.Add("lte", "{0} 不能小于{1}!", true) // see universal-translator for details
+		return ut.Add("lte", "{0} 不能小于{1}!", true) // see universal-translator for details
+	}, func(ut ut.Translator, fe validator.FieldError) string {
+		t, _ := ut.T("lte", fe.Field(), fe.Param())
+		return t
+	})
 
 	address := &Address{
-		Street: "Eavesdown Docks",
-		Planet: "Persphone",
-		Phone:  "none",
+		Street: "光明小区一号",
+		Planet: "地球",
+		Phone:  "18011112222",
 	}
 
 	user := &User{
-		FirstName:      "Badger",
-		LastName:       "Smith",
+		FirstName:      "buff",
+		LastName:       "ge",
 		Age:            135,
-		Email:          "Badger.Smith@gmail.com",
+		Email:          "buffge@qq.com",
 		FavouriteColor: "#000-",
 		Addresses:      []*Address{address},
 	}
 	err := validate.Struct(user)
 	if err != nil {
-		fmt.Println("err简写: ", err)
+		errs := err.(validator.ValidationErrors)
+		fmt.Println("err:  ", errs[0].Translate(trans))
 		// 遍历错误
-		//for _, err := range err.(validator.ValidationErrors) {
-		//    fmt.Println(err)
-		//}
+		for _, e := range errs {
+			fmt.Println(e.Translate(trans))
+		}
 		return
 	}
-
 	// save user to database
 }
 

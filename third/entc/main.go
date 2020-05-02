@@ -11,7 +11,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/configor"
 
-	"github.com/buffge/gobyexample/thrid/entc/ent"
+	"github.com/buffge/gobyexample/third/entc/ent"
 )
 
 type Conf struct {

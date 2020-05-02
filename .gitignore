@@ -6,3 +6,4 @@
 !nbproject/
 conf.json
 go.sum
+*_gen.go
