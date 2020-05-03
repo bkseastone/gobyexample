@@ -22,10 +22,10 @@ require (
 	github.com/jinzhu/configor v1.1.1
 	github.com/jinzhu/now v1.1.1
 	github.com/jordan-wright/email v0.0.0-20200322182553-8eef2508c362
-	github.com/kr/pretty v0.1.0 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/olekukonko/tablewriter v0.0.4 // indirect
 	github.com/robfig/cron/v3 v3.0.1
+	github.com/shirou/gopsutil v2.20.4+incompatible
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/spf13/cobra v0.0.7 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect

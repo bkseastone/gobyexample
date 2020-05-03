@@ -11,7 +11,7 @@ func main() {
 	fmt.Println(arr0)
 	//获取数组长度
 	fmt.Printf("数组arr0d的长度是%v\n", len(arr0))
-	//定义一个长度为5的int数组
+	//定义一个长度为fgo5的int数组
 	var arr1 [5]int
 	fmt.Println(arr1)
 	//给数组赋值
