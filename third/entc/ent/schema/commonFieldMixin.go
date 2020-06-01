@@ -1,12 +1,15 @@
 package schema
 
 import (
+	"time"
+
 	"github.com/facebookincubator/ent"
 	"github.com/facebookincubator/ent/schema/field"
-	"time"
 )
 
-type CommonFieldMixin struct{}
+type CommonFieldMixin struct {
+	ent.Mixin
+}
 
 func (CommonFieldMixin) Fields() []ent.Field {
 	return []ent.Field{

@@ -47,8 +47,8 @@ func (Article) Config() ent.Config {
 }
 
 // 混用
-func (Article) Mixin() []ent.Mixin {
-	return []ent.Mixin{
-		CommonFieldMixin{},
-	}
-}
+// func (Article) Mixin() []ent.Mixin {
+// 	return []ent.Mixin{
+// 		CommonFieldMixin{},
+// 	}
+// }
