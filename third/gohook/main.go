@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	add()
-
+	// add()
 	low()
 }
 
