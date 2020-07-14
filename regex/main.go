@@ -10,9 +10,9 @@ import (
 func main() {
 	match, _ := regexp.MatchString("123p([a-z]+)ch", "peach")
 	fmt.Println("查看字符串中是否匹配某个regex字符串", match)
-	//编译一个正则对象
+	// 编译一个正则对象
 	r, _ := regexp.Compile("p([a-z]+)ch")
-	//使用正则对象匹配
+	// 使用正则对象匹配
 	fmt.Println("使用正则对象匹配 ", r.MatchString("peach"))
 
 	fmt.Println("使用正则对象匹配一个字符串 ", r.FindString("peach punch"))

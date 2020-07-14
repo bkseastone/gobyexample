@@ -18,7 +18,7 @@ func main() {
 	m5.Write([]byte(s))
 	//计算hash值
 	bs2 := m5.Sum(nil)
-	fmt.Printf("md5值 %x\n", bs2)
+	fmt.Printf("md5值 %X\n", bs2)
 	//sha1
 	//新建sha1对象
 	h := sha1.New()

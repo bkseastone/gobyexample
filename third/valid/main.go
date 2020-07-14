@@ -45,7 +45,6 @@ func main() {
 func validateStruct() {
 	_ = validate.RegisterTranslation("lte", trans, func(ut ut.Translator) error {
 		return ut.Add("lte", "{0} 不能小于{1}!", true) // see universal-translator for details
-		return ut.Add("lte", "{0} 不能小于{1}!", true) // see universal-translator for details
 	}, func(ut ut.Translator, fe validator.FieldError) string {
 		t, _ := ut.T("lte", fe.Field(), fe.Param())
 		return t

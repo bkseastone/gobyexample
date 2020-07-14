@@ -1,15 +1,17 @@
 package main
 
-import b64 "encoding/base64"
-import "fmt"
+import (
+	b64 "encoding/base64"
+	"fmt"
+)
 
 func main() {
 
 	data := "abc123!?$*&()'-=@~"
-	//编码
+	// 编码
 	sEnc := b64.StdEncoding.EncodeToString([]byte(data))
 	fmt.Println(sEnc)
-	//解码
+	// 解码
 	sDec, _ := b64.StdEncoding.DecodeString(sEnc)
 	fmt.Println(string(sDec))
 	fmt.Println()
