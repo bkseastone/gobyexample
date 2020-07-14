@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	pl = fmt.Println
+	pl = log.Println
 )
 
 func startClient(ip string, port int) {
@@ -34,7 +34,7 @@ func startClient(ip string, port int) {
 		}
 		resp, err := http.Get("http://127.0.0.1" + reqStr)
 		if err != nil {
-			resp.Body.Close()
+			_ = resp.Body.Close()
 			continue
 		}
 		body, err := ioutil.ReadAll(resp.Body)
@@ -43,8 +43,8 @@ func startClient(ip string, port int) {
 			pl("请求本地失败", err.Error())
 			return
 		}
-		conn.Write(body)
-		resp.Body.Close()
+		_, _ = conn.Write(body)
+		_ = resp.Body.Close()
 	}
 }
 func byte2Str(p []byte) string {
