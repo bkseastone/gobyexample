@@ -7,11 +7,6 @@ import (
 	"time"
 )
 
-var (
-	pl = fmt.Println
-	pf = fmt.Printf
-)
-
 func main() {
 	var (
 		url                 string
@@ -19,11 +14,11 @@ func main() {
 	)
 	flag.StringVar(&url, "url", "http://baidu.com", "要访问的url")
 	flag.IntVar(&concurrent, "c", 10000, "并发数")
-	flag.IntVar(&timeSec, "time", 1, "轰炸的时间s")
+	flag.IntVar(&timeSec, "time", 1, "压测的时间s")
 	flag.Parse()
-	dos(url, concurrent, timeSec)
+	pressure(url, concurrent, timeSec)
 }
-func dos(url string, concurrency int, timeSec int) {
+func pressure(url string, concurrency int, timeSec int) {
 	var successCount, failedCount, contentLen int
 	quit := time.After(time.Minute * time.Duration(timeSec))
 	begin := time.Now()
@@ -71,7 +66,5 @@ func spider(url string, contItemLen chan int, fail chan byte) {
 		return
 	}
 	defer resp.Body.Close()
-	// body, err := ioutil.ReadAll(resp.Body)
-	// contentLen := len(body)
 	contItemLen <- int(resp.ContentLength)
 }
