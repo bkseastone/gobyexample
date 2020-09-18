@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	bitmap := robotgo.CaptureScreen(0, 0, 1920, 1080)
+	bitmap := robotgo.CaptureScreen()
 	// use `defer robotgo.FreeBitmap(bit)` to free the bitmap
 	defer robotgo.FreeBitmap(bitmap)
 	fmt.Println("...", bitmap)

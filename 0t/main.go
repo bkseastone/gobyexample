@@ -2,44 +2,39 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"net"
-	"strconv"
 	"time"
 )
 
 func main() {
-	// справка
-	//if len(os.Args) != 2 {
-	//	fmt.Fprintf(os.Stderr, "Using: %s ip-addr\n", os.Args[0])
-	//	os.Exit(1)
-	//}
-
-	target := "47.96.13.188"
-
-	activeThreads := 0
-	doneChannel := make(chan bool)
-
-	for port := 0; port <= 65535; port++ {
-		go testTCPConnection(target, port, doneChannel)
-		activeThreads++
+	size := 20000
+	matrix1 := make([][]int, size)
+	for i := 0; i < size; i++ {
+		matrix1[i] = make([]int, size)
 	}
-	log.Println("begin", activeThreads)
-	// Wait for all threads to finish
-	for activeThreads > 0 {
-		<-doneChannel
-		activeThreads--
-	}
-	log.Println("end")
-}
 
-func testTCPConnection(ip string, port int, doneChannel chan bool) {
-	_, err := net.DialTimeout("tcp", ip+":"+strconv.Itoa(port),
-		time.Second*3)
-	if err == nil {
-		fmt.Printf("Port %d: Open\n", port)
-	} else {
-		fmt.Println("err: ", err)
+	start1 := time.Now()
+	// 方法 1
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
+			matrix1[i][j] = i + j
+		}
 	}
-	doneChannel <- true
+	fmt.Println(time.Since(start1))
+	matrix2 := make([][]int, size)
+	for i := 0; i < size; i++ {
+		matrix2[i] = make([]int, size)
+	}
+	// 方法 2
+	start2 := time.Now()
+	// for i := 0; i < size; i++ {
+	// 	for j := 0; j < size; j++ {
+	// 		matrix2[j][i] = i + j
+	// 	}
+	// }
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
+			matrix2[j][i] = i + j
+		}
+	}
+	fmt.Println(time.Since(start2))
 }

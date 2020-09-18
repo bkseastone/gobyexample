@@ -5,7 +5,7 @@ import (
 	"github.com/buffge/gobyexample/0test/device"
 )
 
-func main() {
+func main23() {
 	cpuInfo, _ := device.GetCPUInfo()
 	//fmt.Printf("%#v\n", cpuInfo)
 	fmt.Printf("cpu个数 %v\n", len(cpuInfo))
