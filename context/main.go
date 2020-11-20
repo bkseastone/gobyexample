@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"time"
 )
 
@@ -42,17 +43,19 @@ func testDeadline() {
 	time.Sleep(time.Second * 3)
 }
 func main() {
-	testTimeout()
-	//testCancel()
+	// testValue()
+	// testDeadline()
+	// testTimeout()
+	testCancel()
 	// ch 一次只能通知一个 ctx.Done() 可以通知全部
-	//ch := make(chan bool)
-	//go testMultiChan(ch, "1")
-	//go testMultiChan(ch, "2")
-	//go testMultiChan(ch, "3")
-	//go func(ch chan<- bool) {
-	//	<-time.After(3 * time.Second)
-	//	ch <- true
-	//}(ch)
+	// ch := make(chan bool)
+	// go testMultiChan(ch, "1")
+	// go testMultiChan(ch, "2")
+	// go testMultiChan(ch, "3")
+	// go func(ch chan<- bool) {
+	// 	<-time.After(3 * time.Second)
+	// 	ch <- true
+	// }(ch)
 	time.Sleep(10 * time.Second)
 
 }
@@ -90,6 +93,7 @@ func work(ctx context.Context, name string) {
 			return
 		default:
 			println(name, " is running", time.Now().String())
+			log.Println(ctx.Deadline())
 			time.Sleep(time.Second)
 		}
 	}
