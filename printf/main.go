@@ -38,7 +38,7 @@ func main() {
 	fmt.Printf("%x\n", '你')              // 4f60
 	fmt.Printf("%X\n", '你')              // 4F60
 	fmt.Printf("%d\n", 'A')              // 65
-	fmt.Printf("%t\n", 1 > 2)            // false
+	fmt.Printf("%t\n", false)            // false
 	fmt.Printf("%e\n", 4396.7777777)     // 4.396778e+03 默认精度6位
 	fmt.Printf("%20.3e\n", 4396.7777777) //            4.397e+03 设置宽度20,精度3,宽度一般用于对齐
 	fmt.Printf("%E\n", 4396.7777777)     // 4.396778E+03
@@ -51,4 +51,7 @@ func main() {
 	fmt.Printf("%v\n", user)             // {overnote 1}
 	fmt.Printf("%+v\n", user)            // {Name:overnote Age:1}
 	fmt.Printf("%#v\n", user)            // main.User{Name:"overnote", Age:1}
+	// %[number] 表示第一个参数，1开头。后面的%v表示顺延，如果前面是%[2] 那么下个就是%[3]
+	fmt.Printf("%[2]v %[4]v, %v, %[3]v,%v\n", 1, 2, 3, 4, 5, 6) // main.User{Name:"overnote", Age:1}
+
 }
