@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"time"
 )
 
 var (
@@ -26,7 +27,7 @@ func startClient(ip string, port int) {
 	buf := make([]byte, 902400)
 	pl("服务器端地址 ", conn.RemoteAddr())
 	for {
-		conn.Read(buf)
+		_, _ = conn.Read(buf)
 		reqStr := byte2Str(buf)
 		pl("服务器端的返回是 ", reqStr)
 		if reqStr == "ping" || reqStr == "/favicon.ico" {
@@ -56,7 +57,23 @@ func byte2Str(p []byte) string {
 	return string(p)
 }
 func main() {
-	startClient("47.96.13.188", 7788)
+	// startClient("47.96.13.188", 7788)
+	data := make(chan string)
+	go func() {
+		<-time.After(time.Second)
+		for a := range data {
+			log.Println(a)
+		}
+	}()
+	data <- "1"
+	data <- "2"
+	data <- "3"
+	data <- "4"
+	log.Println("begin1")
+	close(data)
+	log.Println("begin")
+	<-time.After(time.Second * 10)
+
 }
 
 /*

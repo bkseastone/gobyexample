@@ -1,5 +1,7 @@
 package main
 
+import "log"
+
 /**
 原子计数
 原子性就是操作是不可中断的,
@@ -13,5 +15,6 @@ package main
 等到协程1加1操作完成了,协程2才能读取到i的值
 */
 func main() {
-
+	i := 200
+	log.Println(i % 200)
 }

@@ -8,14 +8,10 @@ import (
 	"strconv"
 )
 
-var (
-	pl = fmt.Println
-)
-
 func handHttp(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Wrold!") //这个写入到w的是输出到客户端的
+	_, _ = fmt.Fprintf(w, "Hello Wrold!") // 这个写入到w的是输出到客户端的
 	header, _ := json.Marshal(r.Header)
-	fmt.Fprintf(w, string(header)) //这个写入到w的是输出到客户端的
+	_, _ = fmt.Fprintf(w, string(header)) // 这个写入到w的是输出到客户端的
 }
 func main() {
 	port := 8893
