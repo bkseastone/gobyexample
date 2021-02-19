@@ -3,7 +3,6 @@ module github.com/buffge/gobyexample
 go 1.14
 
 require (
-	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/Pallinder/go-randomdata v1.2.0
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d
 	github.com/alexedwards/argon2id v0.0.0-20200522061839-9369edc04b05
@@ -35,10 +34,10 @@ require (
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/stretchr/testify v1.5.1 // indirect
 	github.com/vearne/golib v0.0.4
-	golang.org/x/crypto v0.0.0-20201203163018-be400aefbc4c // indirect
 	golang.org/x/image v0.0.0-20200618115811-c13761719519 // indirect
-	golang.org/x/net v0.0.0-20201202161906-c7110b5ffcbb
-	golang.org/x/sys v0.0.0-20201204225414-ed752295db88 // indirect
+	golang.org/x/net v0.0.0-20200625001655-4c5254603344
+	golang.org/x/sys v0.0.0-20200625212154-ddb9806d33ae // indirect
+	golang.org/x/text v0.3.3 // indirect
 	google.golang.org/genproto v0.0.0-20200626011028-ee7919e894b5 // indirect
 	google.golang.org/grpc v1.30.0
 	google.golang.org/protobuf v1.25.0 // indirect
