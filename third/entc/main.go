@@ -1,17 +1,16 @@
-//go:generate go run github.com/facebookincubator/ent/cmd/entc generate ./ent/schema
+//go:generate go run entgo.io/ent/cmd/ent generate ./ent/schema
 
 package main
 
 import (
 	"context"
 	stdSql "database/sql"
+	"entgo.io/ent/dialect/sql"
 	"fmt"
-	"log"
-	"time"
-
-	"github.com/facebookincubator/ent/dialect/sql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/configor"
+	"log"
+	"time"
 
 	"github.com/buffge/gobyexample/third/entc/ent"
 )
