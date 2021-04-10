@@ -31,24 +31,28 @@ func main() {
 	// 	14: "alarm clock",
 	// 	15: "terminated",
 	sysType := runtime.GOOS
-
 	if sysType == "windows" {
 	}
-	signal.Notify(sigs, syscall.SIGINT, syscall.SIGTERM,
+	signal.Notify(sigs,
+		syscall.SIGINT,
+		syscall.SIGTERM,
 		syscall.SIGQUIT,
 	)
 	go func() {
-		sig := <-sigs
-		switch sig {
-		case syscall.SIGINT:
-			fmt.Println("接收到ctrl + c 信号")
-		case syscall.SIGTERM:
-			fmt.Println("接收到kill 信号")
-		case syscall.SIGQUIT:
-			fmt.Println("接收到ctrl + \\ 信号")
+		for {
+			sig := <-sigs
+			switch sig {
+			case syscall.SIGINT:
+				fmt.Println("接收到ctrl + c 信号")
+				done <- true
+			case syscall.SIGTERM:
+				fmt.Println("接收到kill 信号")
+			case syscall.SIGQUIT:
+				fmt.Println("接收到ctrl + \\ 信号")
+			default:
+				fmt.Println("接受到了信号", sig)
+			}
 		}
-		fmt.Println("接受到了信号", sig)
-		done <- true
 	}()
 	fmt.Println("持续等待信号")
 	<-done

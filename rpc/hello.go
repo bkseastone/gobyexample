@@ -1,3 +1,4 @@
+//go:generate protoc -I ./protos --go_out ./protos *.proto
 package rpcdemo
 
 import "strings"

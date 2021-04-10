@@ -5,10 +5,11 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
-	"github.com/alexedwards/argon2id"
+	"fmt"
 	"log"
+
+	"github.com/alexedwards/argon2id"
 )
-import "fmt"
 
 func main() {
 	s := "buffge"

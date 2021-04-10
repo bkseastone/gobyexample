@@ -40,9 +40,11 @@ require (
 	github.com/vearne/golib v0.0.4
 	github.com/yudai/pp v2.0.1+incompatible // indirect
 	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5 // indirect
-	golang.org/x/net v0.0.0-20210119194325-5f4716e94777
-	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect
-	google.golang.org/genproto v0.0.0-20200626011028-ee7919e894b5 // indirect
-	google.golang.org/grpc v1.33.2
+	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
+	golang.org/x/sys v0.0.0-20210316164454-77fc1eacc6aa // indirect
+	google.golang.org/genproto v0.0.0-20210315173758-2651cd453018 // indirect
+	google.golang.org/grpc v1.36.0
+	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect
+	google.golang.org/protobuf v1.25.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
