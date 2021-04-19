@@ -21,5 +21,8 @@ go mod tidy: 格式化模块,删除无用的,下载有用的
 
 test gitpod
 
+## 调试 init函数
+设置GODEBUG = inittrace=1 会打印所有init函数调用信息
+
 
 
