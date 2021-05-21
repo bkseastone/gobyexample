@@ -11,8 +11,10 @@ require (
 	github.com/Shopify/sarama v1.28.0 // indirect
 	github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d
 	github.com/alexedwards/argon2id v0.0.0-20200522061839-9369edc04b05
+	github.com/fatih/color v1.11.0 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200707082815-5321531c36a2 // indirect
+	github.com/go-kratos/kratos/cmd/kratos/v2 v2.0.0-20210520153050-ef6e52d1bab8 // indirect
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.3.0
@@ -32,21 +34,26 @@ require (
 	github.com/kataras/iris/v12 v12.2.0-alpha2.0.20210302185305-fa81c596dff7
 	github.com/klauspost/compress v1.12.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d // indirect
 	github.com/ouqiang/timewheel v1.0.1
 	github.com/pkg/errors v0.9.1
-	github.com/pkg/profile v1.2.1 // indirect
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/robotn/gohook v0.30.2
 	github.com/segmentio/kafka-go v0.4.14 // indirect
 	github.com/sevlyar/go-daemon v0.1.5
 	github.com/shirou/gopsutil v2.20.5+incompatible
 	github.com/spaolacci/murmur3 v1.1.0
+	github.com/spf13/cobra v1.1.3 // indirect
 	github.com/vearne/golib v0.0.4
 	github.com/yudai/pp v2.0.1+incompatible // indirect
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a // indirect
 	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5 // indirect
+	golang.org/x/mod v0.4.2 // indirect
 	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-	golang.org/x/sys v0.0.0-20210316164454-77fc1eacc6aa // indirect
+	golang.org/x/sys v0.0.0-20210514084401-e8d321eab015 // indirect
+	golang.org/x/term v0.0.0-20210503060354-a79de5458b56 // indirect
+	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/genproto v0.0.0-20210315173758-2651cd453018 // indirect
 	google.golang.org/grpc v1.36.0
 	google.golang.org/grpc/cmd/protoc-gen-go-grpc v1.1.0 // indirect

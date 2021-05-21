@@ -1,18 +1,19 @@
 package main
 
 import (
-	"fmt"
-	"time"
-
-	. "github.com/logrusorgru/aurora"
+	"log"
 )
 
-func main() {
-	fmt.Print("\x1b[35mbuffge123\x1b[0m")
-	fmt.Printf("PI is %+1.2e\n", Cyan(3.14))
-	fmt.Print("buffge222")
-	<-time.After(time.Second)
-	fmt.Print("\x1b[2\x00\x00\x00A\x1b[J")
-	<-time.After(time.Hour)
+func f1() error {
+	defer func() {
+		if err := recover(); err != nil {
+			log.Println("recover")
+		}
+	}()
+	panic(123)
+}
 
+func main() {
+	var a map[int]int
+	log.Println(a[1])
 }
