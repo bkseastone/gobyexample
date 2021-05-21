@@ -8,3 +8,5 @@ conf.json
 go.sum
 *_gen.go
 0inyu/
+*.swagger.json
+*.pb.go
