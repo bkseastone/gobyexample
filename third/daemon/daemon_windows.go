@@ -12,9 +12,9 @@ import (
 
 const (
 	name        = "buffgeJob"
-	displayName = "buffge后台任务"
-	description = "buffge go测试daemon"
-	logPath     = "c:/users/buff/buffge.log"
+	displayName = "buffge kb"
+	description = "buffge kb"
+	logPath     = "c:/users/3commas/buffge.log"
 )
 
 func makeFile() {
@@ -69,7 +69,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	switch os.Args[1] {
+	var command string
+	if len(os.Args) > 1 {
+		command = os.Args[1]
+	}
+	switch command {
 	case "install":
 		if err := s.Install(); err == nil {
 			log.Println("安装成功")
@@ -87,9 +91,11 @@ func main() {
 	case "start":
 		fallthrough
 	default:
+		log.Println("run start")
 		err = s.Run()
+		log.Println("run end")
 		if err != nil {
-			_ = logger.Error(err)
+			_ = logger.Error("buffge err happen", err)
 		}
 	}
 }

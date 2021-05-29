@@ -51,10 +51,12 @@ func main() {
 	// create new gin without any middleware
 	engine := gin.New()
 	// add timeout middleware with 2 second duration
-	engine.Use(Timeout(time.Second * 2))
+	// engine.Use(Timeout(time.Second * 2))
 	engine.GET("/", func(context *gin.Context) {
-		time.Sleep(time.Second * 5)
-		context.String(300, "ssss")
+		// log.Println("收到请求")
+		// time.Sleep(time.Second * 5)
+		// context.String(200, strings.Repeat("1",2049))
+		context.String(200, "ssss")
 	})
 
 	// run the server

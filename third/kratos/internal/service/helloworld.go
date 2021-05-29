@@ -30,7 +30,8 @@ func (s *HelloworldService) DeleteHelloworld(ctx context.Context, req *pb.Delete
 }
 func (s *HelloworldService) GetHelloworld(ctx context.Context, req *pb.GetHelloworldRequest) (*pb.GetHelloworldReply, error) {
 	return &pb.GetHelloworldReply{
-		Msg: fmt.Sprintf("你好%s,%dage!", req.Name, req.Age),
+		Code: new(int32),
+		Msg:  fmt.Sprintf("你好%s,%dage!", req.Name, req.Age),
 	}, nil
 }
 func (s *HelloworldService) ListHelloworld(ctx context.Context, req *pb.ListHelloworldRequest) (*pb.ListHelloworldReply, error) {

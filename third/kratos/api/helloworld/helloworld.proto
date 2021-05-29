@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package api.helloworld;
 import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
 option go_package = "github.com/buffge/gobyexample/third/kratos/api/helloworld;helloworld";
 option java_multiple_files = true;
 option java_package = "api.helloworld";
@@ -31,8 +32,10 @@ message GetHelloworldRequest {
   string name = 2 ;
   int32 age = 1 ;
 }
+
 message GetHelloworldReply {
-  string msg = 1;
+  optional int32 code = 1;
+  string msg = 2;
 }
 
 message ListHelloworldRequest {}
