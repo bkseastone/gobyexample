@@ -1,5 +1,6 @@
 syntax = "proto3";
 option go_package = ".;protos";
+import "google/api/annotations.proto";
 message UserQueryInfo {
   // The location from which the message is sent.
   int32 id = 1;

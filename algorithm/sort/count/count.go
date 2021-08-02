@@ -11,7 +11,7 @@ import (
 
 func main() {
 	dataCount := sortConf.DataCount
-	// dataCount = 100_0000
+	dataCount = 100_0000
 	arr := utils.GenerateRandomIntData(-42312, 1_0000, dataCount)
 	// arr = []int{1, 2, 5, 3, 1}
 	// fmt.Println(arr)

@@ -60,7 +60,6 @@ func spider(contentLenC chan int, failC chan struct{}, doneC chan struct{}) {
 				return
 			default:
 			}
-			contentLen = 0
 			// log.Println("in req", string(reqBts))
 			_, err = conn.Write(reqBts)
 			if err != nil {
@@ -79,6 +78,7 @@ func spider(contentLenC chan int, failC chan struct{}, doneC chan struct{}) {
 			return
 		default:
 		}
+		contentLen = 0
 		// log.Println("in read")
 		n, err = conn.Read(packet)
 		if err != nil {
@@ -108,11 +108,11 @@ func main() {
 	reqBuf := bytes.Buffer{}
 	for i := 0; i < 1000; i++ {
 		reqBuf.WriteString("GET / HTTP/1.1\r\n")
-		reqBuf.WriteString("Host:a.b\r\n")
+		reqBuf.WriteString("Host: a.b\r\n")
 		reqBuf.WriteString("\r\n")
 	}
 	reqBts = reqBuf.Bytes()
-	concurrent := 2000
+	concurrent := 100
 	contentLen := 0
 	successCount := 0
 	failedCount := 0

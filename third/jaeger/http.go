@@ -31,6 +31,7 @@ func userInfo(c *gin.Context) {
 func jeagerMid(c *gin.Context) {
 	tracer := opentracing.GlobalTracer()
 	span := tracer.StartSpan(c.Request.URL.Path)
+	span.Tracer().StartSpan("123", opentracing.ChildOf(span.Context()))
 	defer span.Finish()
 	SetTag(c, span, span.Context())
 	c.Set(tracerKey, tracer)

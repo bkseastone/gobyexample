@@ -1,16 +1,17 @@
 package server
 
 import (
-	v2 "github.com/buffge/gobyexample/third/kratos/api/helloworld"
-	v1 "github.com/buffge/gobyexample/third/kratos/api/helloworld/v1"
-	"github.com/buffge/gobyexample/third/kratos/internal/conf"
-	"github.com/buffge/gobyexample/third/kratos/internal/service"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware"
 	"github.com/go-kratos/kratos/v2/middleware/logging"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"
 	"github.com/go-kratos/kratos/v2/middleware/tracing"
 	"github.com/go-kratos/kratos/v2/transport/grpc"
+
+	v2 "github.com/buffge/gobyexample/third/kratos/api/helloworld"
+	v1 "github.com/buffge/gobyexample/third/kratos/api/helloworld/v1"
+	"github.com/buffge/gobyexample/third/kratos/internal/conf"
+	"github.com/buffge/gobyexample/third/kratos/internal/service"
 )
 
 // NewGRPCServer new a gRPC server.

@@ -1,12 +1,10 @@
 package main
 
 import (
-	"flag"
 	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
-	"strconv"
 	"time"
 )
 
@@ -24,23 +22,20 @@ var (
  *
  */
 func main() {
-	var (
-		url string
-	)
-	flag.StringVar(&url, "url", "http://baidu.com", "要访问的url")
+	url := "http://:8080"
+	tranSport := &http.Transport{}
 	// 新建客户端
-	client := &http.Client{}
+	client := &http.Client{
+		Transport: tranSport,
+	}
 	req, err := http.NewRequest("GET",
 		url, nil)
 	if err != nil {
 		panic(err)
 	}
 	rand.Seed(time.Now().UnixNano())
-	randIp := strconv.Itoa(rand.Intn(221-58)+58) + "." +
-		strconv.Itoa(rand.Intn(0xff)) + "." +
-		strconv.Itoa(rand.Intn(0xff)) + "." +
-		strconv.Itoa(rand.Intn(0xff))
-	req.Header.Set("X-FORWARDED-FOR", randIp)
+	randIp := "192.123.123.1"
+	req.Header.Set("X-Real-Ip", randIp)
 	req.Header.Set("User-Agent", UserAgent)
 	resp, err := client.Do(req)
 	if err != nil {

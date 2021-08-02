@@ -57,7 +57,7 @@ func merge(arr []int, lo, hi int) {
 }
 func main() {
 	dataCount := sort2.DataCount
-	dataCount = 100000
+	dataCount = 10_0000
 	arr := utils.GenerateRandomIntData(0, 100, dataCount)
 	// fmt.Println(arr)
 	now := time.Now()
