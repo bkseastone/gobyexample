@@ -68,7 +68,7 @@ func newScanner(ip net.IP, router routing.Router) (*scanner, error) {
 	// Note we could very easily add some BPF filtering here to greatly
 	// decrease the number of packets we have to look at when getting back
 	// scan results.
-	handle, err := pcap.OpenLive(iface.Name, 65536, true, pcap.BlockForever)
+	handle, err := pcap.OpenLive(iface.Name, 65536, true, time.Millisecond)
 	if err != nil {
 		return nil, err
 	}
@@ -136,7 +136,7 @@ func (s *scanner) getHwAddr() (net.HardwareAddr, error) {
 }
 
 // scan scans the dst IP address of this scanner.
-func (s *scanner) scan() error {
+func (s *scanner) scan(openIPc chan int) error {
 	// First off, get the MAC address we should be sending packets to.
 	hwaddr, err := s.getHwAddr()
 	if err != nil {
@@ -181,7 +181,6 @@ func (s *scanner) scan() error {
 			log.Printf("timed out for %v, assuming we've seen all we can", s.dst)
 			return nil
 		}
-
 		// Read in the next packet.
 		data, _, err := s.handle.ReadPacketData()
 		if err == pcap.NextErrorTimeoutExpired {
@@ -208,11 +207,12 @@ func (s *scanner) scan() error {
 			// happen.
 			panic("tcp layer is not tcp layer :-/")
 		} else if tcp.DstPort != 54321 {
-			// log.Printf("dst port %v does not match", tcp.DstPort)
+			log.Printf("dst port %v does not match", tcp.DstPort)
 		} else if tcp.RST {
 			log.Printf("  port %v closed", tcp.SrcPort)
 		} else if tcp.SYN && tcp.ACK {
-			log.Printf("  port %v open", tcp.SrcPort)
+			openIPc <- int(tcp.SrcPort)
+			// log.Printf("  port %v open", tcp.SrcPort)
 		} else {
 			// log.Printf("ignoring useless packet")
 		}
@@ -233,6 +233,15 @@ func main() {
 	if err != nil {
 		log.Fatal("routing error:", err)
 	}
+	openIPc := make(chan int, 10000)
+	go func() {
+		for {
+			select {
+			case ip := <-openIPc:
+				log.Printf("%d is open\n", ip)
+			}
+		}
+	}()
 	ips := []string{"47.100.179.165"}
 	for _, arg := range ips {
 		var ip net.IP
@@ -251,7 +260,7 @@ func main() {
 			log.Printf("unable to create scanner for %v: %v", ip, err)
 			continue
 		}
-		if err := s.scan(); err != nil {
+		if err := s.scan(openIPc); err != nil {
 			log.Printf("unable to scan %v: %v", ip, err)
 		}
 		s.close()
