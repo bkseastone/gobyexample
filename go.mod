@@ -5,6 +5,9 @@ go 1.14
 require (
 	entgo.io/ent v0.6.0
 	fyne.io/fyne/v2 v2.0.0
+	git-admin.inyuapp.com/pkg/diamond v0.0.0-20210323083724-245c6f691b35
+	git-admin.inyuapp.com/pkg/giftbag-sdk v0.0.0-20210401063243-48e3888f4ebb
+	git-admin.inyuapp.com/pkg/message v0.0.0-20210818093616-d8ce67fb31bb
 	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/HdrHistogram/hdrhistogram-go v1.0.1 // indirect
 	github.com/Pallinder/go-randomdata v1.2.0
@@ -13,7 +16,7 @@ require (
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200707082815-5321531c36a2 // indirect
 	github.com/go-kratos/kratos/v2 v2.0.0-beta4
-	github.com/go-ping/ping v0.0.0-20210506233800-ff8be3320020 // indirect
+	github.com/go-ping/ping v0.0.0-20210506233800-ff8be3320020
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.6.1
@@ -22,6 +25,7 @@ require (
 	github.com/golang/protobuf v1.5.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/gopacket v1.1.19
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/google/wire v0.5.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2
