@@ -14,6 +14,7 @@ service Helloworld {
   rpc GetHelloworld (GetHelloworldRequest) returns (GetHelloworldReply){
     option (google.api.http) = {
       get: "/buffge/test"
+
     };
   };
   rpc ListHelloworld (ListHelloworldRequest) returns (ListHelloworldReply);

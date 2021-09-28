@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+
 	"github.com/go-kratos/kratos/v2/log"
 )
 
@@ -20,7 +21,7 @@ type GreeterUsecase struct {
 }
 
 func NewGreeterUsecase(repo GreeterRepo, logger log.Logger) *GreeterUsecase {
-	return &GreeterUsecase{repo: repo, log: log.NewHelper("usecase/greeter", logger)}
+	return &GreeterUsecase{repo: repo, log: log.NewHelper(logger)}
 }
 
 func (uc *GreeterUsecase) Create(ctx context.Context, g *Greeter) error {

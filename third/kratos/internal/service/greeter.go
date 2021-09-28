@@ -19,7 +19,7 @@ type GreeterService struct {
 
 // NewGreeterService new a greeter service.
 func NewGreeterService(uc *biz.GreeterUsecase, logger log.Logger) *GreeterService {
-	return &GreeterService{uc: uc, log: log.NewHelper("service/greeter", logger)}
+	return &GreeterService{uc: uc, log: log.NewHelper(logger)}
 }
 
 // SayHello implements helloworld.GreeterServer

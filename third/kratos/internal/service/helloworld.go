@@ -15,7 +15,7 @@ type HelloworldService struct {
 
 func NewHelloworldService(logger log.Logger) *HelloworldService {
 	return &HelloworldService{
-		log: log.NewHelper("service/buffge", logger),
+		log: log.NewHelper(logger),
 	}
 }
 

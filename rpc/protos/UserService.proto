@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = ".;protos";
+option go_package = "github.com/buffge/gobyexample/rpc/protos;protos";
 import "google/api/annotations.proto";
 message UserQueryInfo {
   // The location from which the message is sent.
