@@ -5,6 +5,9 @@ go 1.14
 require (
 	entgo.io/ent v0.8.0
 	fyne.io/fyne/v2 v2.0.0
+	git-admin.inyuapp.com/pkg/diamond v0.0.0-20210901060608-e96b2773d340
+	git-admin.inyuapp.com/pkg/giftbag-sdk v0.0.0-20210401063243-48e3888f4ebb
+	git-admin.inyuapp.com/pkg/message v0.0.0-20210818093616-d8ce67fb31bb
 	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
 	github.com/Pallinder/go-randomdata v1.2.0
@@ -19,13 +22,13 @@ require (
 	github.com/go-playground/validator/v10 v10.6.1
 	github.com/go-sql-driver/mysql v1.5.1-0.20200311113236-681ffa848bae
 	github.com/go-vgo/robotgo v0.90.2
+	github.com/golang/protobuf v1.5.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/gopacket v1.1.19
 	github.com/google/uuid v1.3.0
 	github.com/google/wire v0.5.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2
-	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/imdario/mergo v0.3.11 // indirect
 	github.com/jinzhu/configor v1.2.1
 	github.com/jinzhu/now v1.1.1
@@ -33,7 +36,6 @@ require (
 	github.com/json-iterator/go v1.1.11 // indirect
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
 	github.com/kardianos/service v1.1.0
-	github.com/karlseguin/ccache/v2 v2.0.8 // indirect
 	github.com/klauspost/compress v1.12.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect

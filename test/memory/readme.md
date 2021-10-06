@@ -1,6 +1,6 @@
 # benchmark
 
-> go test -bench="." -v -benchmem
+> go test -bench="." -v  -benchmem  -gcflags="-N -l -m=2"
 > 
 > -gcflags=-l 禁止内联
 >
@@ -11,3 +11,4 @@
 > -gcflags=-l=4 内联级别4,在 Go 1.11 中将支持实验性的 中间栈内联优化。
 >
 > -gcflags=-N 禁止优化代码
+> -gcflags=-m 显示优化决策
