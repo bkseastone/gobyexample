@@ -130,3 +130,31 @@ func BenchmarkMem7(b *testing.B) {
 		a2 = append(a2, t2)
 	}
 }
+
+// 无法在编译时确定的大小
+func BenchmarkMem8(b *testing.B) {
+	fn := func(n int) {
+		_ = make([]int8, 0, n)
+	}
+	n := 5
+	const n2 = 5
+	for i := 0; i < b.N; i++ {
+		fn(n)                   // 1 alloc  5个字节
+		_ = make([]int8, 0, n)  // 1 alloc 5个字节
+		_ = make([]int8, 0, n2) // 0 alloc 常量在编译时就知道大小 所以会在栈上
+	}
+}
+
+// todo 协程执行函数会分配
+func BenchmarkMem9(b *testing.B) {
+	nop := func() {}
+	fn1 := func() int8 {
+		return 0
+	}
+	_ = nop
+	for i := 0; i < b.N; i++ {
+		go fn1() // 1 alloc 16b todo why 16b
+		go nop()
+		go fn1() // 1 alloc 16b
+	}
+}
