@@ -7,6 +7,7 @@ require (
 	fyne.io/fyne/v2 v2.0.0
 	git-admin.inyuapp.com/pkg/diamond v0.0.0-20210901060608-e96b2773d340
 	git-admin.inyuapp.com/pkg/giftbag-sdk v0.0.0-20210401063243-48e3888f4ebb
+	git-admin.inyuapp.com/pkg/guuc v0.0.0-20210913120606-78530582638a // indirect
 	git-admin.inyuapp.com/pkg/message v0.0.0-20210818093616-d8ce67fb31bb
 	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/HdrHistogram/hdrhistogram-go v1.1.0 // indirect
@@ -16,10 +17,12 @@ require (
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200707082815-5321531c36a2 // indirect
 	github.com/go-kratos/kratos/v2 v2.0.0-beta4
+	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/go-ping/ping v0.0.0-20210506233800-ff8be3320020
 	github.com/go-playground/locales v0.13.0
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.6.1
+	github.com/go-redis/redis/v8 v8.11.4 // indirect
 	github.com/go-sql-driver/mysql v1.5.1-0.20200311113236-681ffa848bae
 	github.com/go-vgo/robotgo v0.90.2
 	github.com/golang/protobuf v1.5.2
@@ -39,6 +42,7 @@ require (
 	github.com/klauspost/compress v1.12.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.13 // indirect
+	github.com/mitchellh/go-ps v1.0.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/ouqiang/timewheel v1.0.1
 	github.com/pkg/errors v0.9.1
